@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Space</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        /* состояние 1 */
+        a {
+            position: relative;
+        }
+
+        .display {
+            background-color: #2d2d2d;
+            width: 80%;
+            height: 50%;
+            position: relative;
+            color: white;
+            top: -100%;
+            margin: 0 auto;
+            opacity: 0;
+            transition: top 0s .7s, opacity .7s 0s;
+        }
+
+        .show {
+            top: -20%;
+            opacity: 0.8;
+            transition: top 0s .7s, opacity .7s 0s;
+        }
+
+        .close {
+            display: block;
+            color: antiquewhite;
+            font-size: 1.4em;
+            margin: 5px;
+            text-decoration: none;
+            font-family: Arial;
+        }
+
+        .modal {
+
+            word-wrap: anywhere;
+            /* break-word — Перенос строк добавляется автоматически, чтобы слово поместилось в заданную ширину блока.  */
+            width: 80%;
+            margin: 0 auto;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 160%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .btn-clear {
+            display: block;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #text {
+            min-width: 100%;
+            max-width: 100%;
+            font-family: 'Roboto';
+            box-shadow: 0 2px #d4cece;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Читаем быстро</h1>
+
+    <a href="#" class="btn">Окно</a>
+    <a href="#" class="btn-clear">Очистить</a>
+
+    <div class="container">
+        <textarea name="text" id="text" cols="1" rows="5" title="Нажми 'Окно' и кликни на текст"></textarea>
+    </div>
+
+    <div id="elem" class="display">
+        <a href="#!" class="close">x</a>
+    </div>
+
+    <script>
+        let btnShow = document.querySelector('.btn');
+        let btnClose = document.querySelector('.close');
+        let btnClear = document.querySelector('.btn-clear');
+
+        let show = () => {
+            let modal = document.querySelector('#elem');
+            modal.classList.add('show');
+        }
+
+        let close = () => {
+            let modal = document.querySelector('#elem');
+            modal.classList.remove('show');
+
+            if (document.querySelector('.modal') != null) {
+                document.querySelector('.modal').remove();
+                console.log('modal')
+            }
+        }
+
+        btnClear.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector('#text').value = '';
+        })
+
+        btnShow.addEventListener('click', function (e) {
+            e.preventDefault();
+            show();
+        })
+
+        btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            close();
+        })
+
+        
+        text.oninput = function (e) {
+            let localName = e.target.localName;
+            console.log(localName);
+
+            if (localName == 'textarea') {
+                let str = e.target.value;
+                let strNew = str.replace(/ /g, '');
+                let modal = document.querySelector('#elem');
+                let text = document.createElement('p');
+                let newModal = modal.appendChild(text);
+                newModal.innerText = strNew;
+                if (document.querySelector('.modal') != null) {
+                    document.querySelector('.modal').remove();
+                    console.log('modal');
+                }
+                newModal.classList.add('modal');
+            }
+
+        }
+    
+        console.log('b' + 'a' + +'a' + 'a');
+    </script>
+</body>
+
+</html>
