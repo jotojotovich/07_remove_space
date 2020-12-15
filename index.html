@@ -72,6 +72,7 @@
             min-width: 100%;
             max-width: 100%;
             font-family: 'Roboto';
+            box-shadow: 0 2px #d4cece;
         }
     </style>
 </head>
@@ -125,7 +126,8 @@
             close();
         })
 
-        document.onclick = function (e) {
+        
+        text.oninput = function (e) {
             let localName = e.target.localName;
             console.log(localName);
 
@@ -144,6 +146,7 @@
             }
 
         }
+    
         console.log('b' + 'a' + +'a' + 'a');
     </script>
 </body>
