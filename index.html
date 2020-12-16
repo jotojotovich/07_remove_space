@@ -111,6 +111,36 @@
             }
         }
 
+
+        let arrayEvents = ['input', 'click'];
+
+        for (let i = 0; i < arrayEvents.length; i++) {
+            text.addEventListener(arrayEvents[i], function (e) {
+                let localName = e.target.localName; // записать в переменную
+                console.log(localName);
+
+                if (localName == 'textarea') {
+                    let str = e.target.value;
+                    let strNew = str.replace(/ /g, '');
+                    let modal = document.querySelector('#elem');
+                    let text = document.createElement('p');
+                    let newModal = modal.appendChild(text);
+                    newModal.innerText = strNew;
+                    if (document.querySelector('.modal') != null) {
+                        document.querySelector('.modal').remove();
+                        console.log('modal');
+                    }
+                    newModal.classList.add('modal');
+                }
+            })
+        }
+
+
+
+        function showText() {
+
+        }
+
         btnClear.addEventListener('click', function (e) {
             e.preventDefault();
             document.querySelector('#text').value = '';
@@ -126,27 +156,47 @@
             close();
         })
 
-        
-        text.oninput = function (e) {
-            let localName = e.target.localName;
-            console.log(localName);
 
-            if (localName == 'textarea') {
-                let str = e.target.value;
-                let strNew = str.replace(/ /g, '');
-                let modal = document.querySelector('#elem');
-                let text = document.createElement('p');
-                let newModal = modal.appendChild(text);
-                newModal.innerText = strNew;
-                if (document.querySelector('.modal') != null) {
-                    document.querySelector('.modal').remove();
-                    console.log('modal');
-                }
-                newModal.classList.add('modal');
-            }
+        // text.oninput = function (e) {
+        //     let localName = e.target.localName; // записать в переменную
+        //     console.log(localName);
 
-        }
-    
+        //     if (localName == 'textarea') {
+        //         let str = e.target.value;
+        //         let strNew = str.replace(/ /g, '');
+        //         let modal = document.querySelector('#elem');
+        //         let text = document.createElement('p');
+        //         let newModal = modal.appendChild(text);
+        //         newModal.innerText = strNew;
+        //         if (document.querySelector('.modal') != null) {
+        //             document.querySelector('.modal').remove();
+        //             console.log('modal');
+        //         }
+        //         newModal.classList.add('modal');
+        //     }
+
+        // }
+
+        // text.onclick = function (e) {
+        //     let localName = e.target.localName; // записать в переменную
+        //     console.log(localName);
+
+        //     if (localName == 'textarea') {
+        //         let str = e.target.value;
+        //         let strNew = str.replace(/ /g, '');
+        //         let modal = document.querySelector('#elem');
+        //         let text = document.createElement('p');
+        //         let newModal = modal.appendChild(text);
+        //         newModal.innerText = strNew;
+        //         if (document.querySelector('.modal') != null) {
+        //             document.querySelector('.modal').remove();
+        //             console.log('modal');
+        //         }
+        //         newModal.classList.add('modal');
+        //     }
+
+        // }
+
         console.log('b' + 'a' + +'a' + 'a');
     </script>
 </body>
